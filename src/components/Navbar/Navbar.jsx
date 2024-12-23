@@ -1,5 +1,6 @@
 import { IoMdSearch } from 'react-icons/io';
 import { FaCartShopping } from 'react-icons/fa6';
+import { FaCaretDown } from 'react-icons/fa';
 import DarkMode from './DarkMode';
 const menuLinks = [
   {
@@ -23,9 +24,26 @@ const menuLinks = [
     link: '/#blogs',
   },
 ];
+const dropDownLinks = [
+  {
+    id: 1,
+    name: 'Trending Products',
+    link: '/#',
+  },
+  {
+    id: 2,
+    name: 'Best Selling',
+    link: '/#',
+  },
+  {
+    id: 3,
+    name: 'Top Rated',
+    link: '/#',
+  },
+];
 const Navbar = () => {
   return (
-    <nav className='bg-white dark:bg-gray-900 dark:text-white duration-200 relative z-40'>
+    <nav className='bg-white dark:bg-gray-900 dark:text-white duration-200 dark:mb-4 relative z-40'>
       <div className='py-4'>
         <div className='container flex items-center justify-between'>
           {/* logo and Links section */}
@@ -43,6 +61,33 @@ const Navbar = () => {
                     </a>
                   </li>
                 ))}
+                {/* dropdown links */}
+                <li className='relative group'>
+                  <a
+                    href='#'
+                    className='flex items-center justify-center py-2 gap-[2px] text-gray-500 font-semibold hover:text-black dark:hover:text-white duration-200'
+                  >
+                    Quick Links
+                    <span>
+                      <FaCaretDown className='group-hover:rotate-180 transition-all duration-300' />
+                    </span>
+                  </a>
+                  {/* dropdown item */}
+                  <div className='hidden absolute z-[9999] group-hover:block w-[200px] bg-white shadow-md text-black p-2 rounded-md dark:bg-gray-900 dark:text-white duration-300'>
+                    <ul className='space-y-2'>
+                      {dropDownLinks.map((data) => (
+                        <li key={data.id}>
+                          <a
+                            href={data.link}
+                            className='text-gray-500 font-semibold hover:text-black hover:bg-primary/20 inline-block p-2 rounded-md w-full dark:hover:text-white duration-200'
+                          >
+                            {data.name}
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </li>
               </ul>
             </div>
           </div>
